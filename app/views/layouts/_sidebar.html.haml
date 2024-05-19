@@ -1,29 +1,25 @@
 .d-flex.flex-column.flex-shrink-0.p-3.bg-body-tertiary{style: "width: 280px;"}
-  %a.d-flex.align-items-center.link-body-emphasis.text-decoration-none{href: "/"}
+  = link_to root_path, class: "d-flex align-items-center px-4 link-body-emphasis text-decoration-none" do
     %i.bi.bi-code.pe-none.me-2{style: "font-size: 2rem"}
     %span.fs-4 DevTools
   %hr/
   %ul.nav.nav-pills.flex-column.mb-auto
-    %li.nav-item
-      %a.nav-link.active{"aria-current" => "page", href: "#"}
-        %i.bi.bi-house.pe-none.me-2
-        Home
     %li
-      %a.nav-link.link-body-emphasis{href: "#"}
-        %i.bi.bi-speedometer.pe-none.me-2
-        Dashboard
+      = link_to json_validators_path, class: "nav-link link-body-emphasis" do
+        %i.bi.bi-filetype-json.pe-none.me-2
+        JSON Format/Validate
     %li
-      %a.nav-link.link-body-emphasis{href: "#"}
-        %i.bi.bi-table.pe-none.me-2
-        Orders
+      = link_to jwt_debuggers_path, class: "nav-link link-body-emphasis" do
+        %i.bi.bi-file-earmark-code-fill.pe-none.me-2
+        JWT Debugger
     %li
-      %a.nav-link.link-body-emphasis{href: "#"}
-        %i.bi.bi-grid.pe-none.me-2
-        Products
+      = link_to reg_exr_testers_path, class: "nav-link link-body-emphasis" do
+        %i.bi.bi-code-square.pe-none.me-2
+        RegExp Tester
     %li
-      %a.nav-link.link-body-emphasis{href: "#"}
-        %i.bi.bi-people.pe-none.me-2
-        Customers
+      = link_to string_generators_path, class: "nav-link link-body-emphasis" do
+        %i.bi.bi-command.pe-none.me-2
+        Secure String Generator
   %hr/
   .dropdown
     %a.d-flex.align-items-center.link-body-emphasis.text-decoration-none.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#"}
