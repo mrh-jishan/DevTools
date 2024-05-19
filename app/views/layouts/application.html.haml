@@ -9,4 +9,7 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
   %body
-    = yield
+    .d-flex.min-vh-100
+      = render "layouts/sidebar"
+      .container
+        = yield
