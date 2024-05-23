@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'home/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :json_validators, :only => [:index]
+  resources :json_validators, :only => [:index, :create]
   resources :jwt_debuggers, :only => [:index]
   resources :reg_exr_testers, :only => [:index]
   resources :string_generators, :only => [:index]

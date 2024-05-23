@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import JsonHighlightController from "./json_highlight_controller"
+application.register("json-highlight", JsonHighlightController)

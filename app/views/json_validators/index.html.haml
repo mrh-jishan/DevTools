@@ -1,2 +1,9 @@
-%h1 JsonValidators#index
-%p Find me in app/views/json_validators/index.html.haml
+= simple_form_for :json_validators, url: json_validators_path, data: { remote: "true" }, method: "post", html: {class: 'row m-4'} do |f|
+  .col-4
+    = f.input :json_input, :as => :text
+  .col-1
+    .h-100.d-flex.justify-content-center.align-items-center
+      = f.submit t('.validate'), class: 'btn btn-primary'
+  .col-5
+    .bg-primary-subtle.text-break.json-text-area
+      =render "code_highlight", data: ""
