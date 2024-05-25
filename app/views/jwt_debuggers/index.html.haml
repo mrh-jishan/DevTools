@@ -1,2 +1,14 @@
-%h1 JwtDebuggers#index
-%p Find me in app/views/jwt_debuggers/index.html.haml
+-# %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
+  -# %div{"data-codemirror-target": "editor"}
+  -# = hidden_field_tag :body, class: 'form-control', data: {codemirror_target: "input"}
+
+= simple_form_for :jwt_debuggers, url: jwt_debuggers_path, data: { remote: "true" }, method: "post", html: {class: 'row m-4'} do |f|
+  .col-4
+    = f.input_field :json_input,value:  @token, :as => :text,  class: 'json-text-area'
+  .col-1
+    .h-100.d-flex.justify-content-center.align-items-center
+      = f.submit t('.decode'), class: 'btn btn-primary'
+  .col-5
+    = render "jwt_debuggers/jwt_payload", payload: ""
+
+

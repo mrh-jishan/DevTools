@@ -4,8 +4,9 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)
 
-import JsonHighlightController from "./json_highlight_controller"
-application.register("json-highlight", JsonHighlightController)
+import CodemirrorController from "./codemirror_controller"
+application.register("codemirror", CodemirrorController)
+

@@ -1,3 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import "json_validators";
+
+.json-text-area {
+  min-height: calc(100vh - 65px);
+  max-height: calc(100vh - 65px);
+  overflow-y: scroll;
+  width: 100%;
+  border-radius: 5px;
+}
+

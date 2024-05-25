@@ -32,3 +32,9 @@ en:
   json_validators:
     index:
       validate: "Validate"
+  jwt_debuggers:
+    index:
+      decode: "Decode"
+  string_generators:
+    index:
+      generate: "Generate"

@@ -1,2 +1,27 @@
 %h1 StringGenerators#index
 %p Find me in app/views/string_generators/index.html.haml
+
+.card
+  .card-header
+    Instantly generate a secure, random password
+  .card-body
+    =render "password"
+
+= simple_form_for :string_generators, url: string_generators_path, data: { remote: "true" }, method: "post" do |f|
+  .card
+    .card-header
+      Customize your password
+    .card-body
+      .row
+        .col-6
+          = f.input :password_length, as: :range, input_html:{ min:"0", max:"45", step: "1"}
+        .col-3
+          =f.input :password_strength, as: :radio_buttons, collection: %w[easy_to_say easy_to_read all_characters]
+        .col-3
+          =f.input :uppercase, as: :boolean
+          =f.input :Lowercase, as: :boolean
+          =f.input :Numbers, as: :boolean
+          =f.input :Symbols, as: :boolean
+
+  =f.submit t('.generate'), class: "btn btn-primary"
+

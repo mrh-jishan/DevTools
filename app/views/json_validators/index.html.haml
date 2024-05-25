@@ -1,9 +1,10 @@
-= simple_form_for :json_validators, url: json_validators_path, data: { remote: "true" }, method: "post", html: {class: 'row m-4'} do |f|
-  .col-4
-    = f.input :json_input, :as => :text
-  .col-1
-    .h-100.d-flex.justify-content-center.align-items-center
-      = f.submit t('.validate'), class: 'btn btn-primary'
-  .col-5
-    .bg-primary-subtle.text-break.json-text-area
-      =render "code_highlight", data: ""
+= simple_form_for :json_validators, url: json_validators_path, data: { remote: "true" }, method: "post", html: {class: 'm-4'} do |f|
+  .row
+    .col-5
+      = f.input_field :json_input, :as => :text,  class: 'json-text-area'
+    .col-2
+      .h-100.d-flex.justify-content-center.align-items-center
+        = f.submit t('.validate'), class: 'btn btn-primary'
+    .col-5
+      .text-break.json-text-area
+        =render "code_block"
