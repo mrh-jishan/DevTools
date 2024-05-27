@@ -1,11 +1,19 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-.json-text-area {
-  min-height: calc(100vh - 65px);
-  max-height: calc(100vh - 65px);
-  overflow-y: scroll;
-  width: 100%;
-  border-radius: 5px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 10px 1fr;
 }
 
+.grid-item {
+  overflow: auto;
+  box-sizing: border-box;
+  min-height: calc(100vh - 65px);
+  max-height: calc(100vh - 65px);
+}
+
+.gutter-col {
+  background-color: #ccc;
+  cursor: ew-resize;
+}

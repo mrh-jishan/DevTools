@@ -4,9 +4,14 @@
 
 import { application } from "./application"
 
+import ButtonlessFormController from "./buttonless_form_controller"
+application.register("buttonless-form", ButtonlessFormController)
+
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
 import CodemirrorController from "./codemirror_controller"
 application.register("codemirror", CodemirrorController)
 
+import SplitGridController from "./split_grid_controller"
+application.register("split-grid", SplitGridController)

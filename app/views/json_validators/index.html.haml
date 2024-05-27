@@ -1,10 +1,6 @@
-= simple_form_for :json_validators, url: json_validators_path, data: { remote: "true" }, method: "post", html: {class: 'm-4'} do |f|
-  .row
-    .col-5
-      = f.input_field :json_input, :as => :text,  class: 'json-text-area'
-    .col-2
-      .h-100.d-flex.justify-content-center.align-items-center
-        = f.submit t('.validate'), class: 'btn btn-primary'
-    .col-5
-      .text-break.json-text-area
-        =render "code_block"
+= turbo_frame_tag :json_validators do
+  = simple_form_for :json_validators, url: json_validators_path, data: { controller: "buttonless-form", remote: "true" }, method: "post", html: {class: 'm-4'} do |f|
+    .grid{ data: { controller: "split-grid" }}
+      = f.input_field :json_input, :as => :text, value: @data,  class: 'form-control grid-item'
+      .gutter-col{"data-gutter-col" => ""}
+      .grid-item=render "code_block"

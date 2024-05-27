@@ -1,5 +1,5 @@
-.d-flex.flex-column.flex-shrink-0.p-3.bg-body-tertiary{style: "width: 280px;"}
-  = link_to root_path, class: "d-flex align-items-center px-4link-body-emphasis.text-decoration-none" do
+.d-flex.flex-column.p-3.min-vh-100
+  = link_to root_path, class: "d-flex align-items-center px-4link-body-emphasis text-decoration-none" do
     %i.bi.bi-code.pe-none.me-2{style: "font-size: 2rem"}
     %span.fs-4 DevTools
   %hr/
@@ -20,19 +20,19 @@
       = link_to string_generators_path, class: "nav-link link-body-emphasis" do
         %i.bi.bi-command.pe-none.me-2
         Secure String Generator
-  -# %hr/
-  -# .dropdown
-  -#   %a.d-flex.align-items-center.link-body-emphasis.text-decoration-none.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#"}
-  -#     %img.rounded-circle.me-2{alt: "", height: "32", src: "https://github.com/mdo.png", width: "32"}/
-  -#     %strong mdo
-  -#   %ul.dropdown-menu.text-small.shadow
-  -#     %li
-  -#       %a.dropdown-item{href: "#"} New project...
-  -#     %li
-  -#       %a.dropdown-item{href: "#"} Settings
-  -#     %li
-  -#       %a.dropdown-item{href: "#"} Profile
-  -#     %li
-  -#       %hr.dropdown-divider/
-  -#     %li
-  -#       %a.dropdown-item{href: "#"} Sign out
+  %hr/
+  .dropdown
+    %a.d-flex.align-items-center.link-body-emphasis.text-decoration-none.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#"}
+      %img.rounded-circle.me-2{alt: "", height: "32", src: "https://github.com/mdo.png", width: "32"}/
+      %strong mdo
+    %ul.dropdown-menu.text-small.shadow
+      %li
+        %a.dropdown-item{href: "#"} New project...
+      %li
+        %a.dropdown-item{href: "#"} Settings
+      %li
+        %a.dropdown-item{href: "#"} Profile
+      %li
+        %hr.dropdown-divider/
+      %li
+        %a.dropdown-item{href: "#"} Sign out

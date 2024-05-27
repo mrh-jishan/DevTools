@@ -1,5 +1,6 @@
 class JsonValidatorsController < ApplicationController
   def index
+    @data = ""
   end
 
   def create
