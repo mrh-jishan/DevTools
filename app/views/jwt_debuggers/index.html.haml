@@ -1,14 +1,7 @@
--# %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
-  -# %div{"data-codemirror-target": "editor"}
-  -# = hidden_field_tag :body, class: 'form-control', data: {codemirror_target: "input"}
-
-= simple_form_for :jwt_debuggers, url: jwt_debuggers_path, data: { remote: "true" }, method: "post", html: {class: 'row m-4'} do |f|
-  .col-4
-    = f.input_field :json_input,value:  @token, :as => :text,  class: 'json-text-area'
-  .col-1
-    .h-100.d-flex.justify-content-center.align-items-center
-      = f.submit t('.decode'), class: 'btn btn-primary'
-  .col-5
-    = render "jwt_debuggers/jwt_payload", payload: ""
-
-
+= turbo_frame_tag :jwt_debuggers do
+  = simple_form_for :jwt_debuggers, url: jwt_debuggers_path, data: { controller: "buttonless-form", remote: "true" }, method: "post" do |f|
+    .grid{ data: { controller: "split-grid" }}
+      .p-4
+        = f.input_field :json_input, :as => :text, value: @token,  class: 'form-control grid-item'
+      .gutter-col{"data-gutter-col" => ""}
+      .grid-item= render "jwt_payload"

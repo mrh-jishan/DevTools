@@ -1,19 +1,22 @@
 =turbo_frame_tag "payload" do
-  .card
-    .card-header
-      HEADER:ALGORITHM & TOKEN TYPE
-    .card-body
-      %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
-      -# %code= syntax_highlight({name: '23432'}).html_safe
-  .card
-    .card-header
-      PAYLOAD:DATA
-    .card-body
-      %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
-      -# %code= syntax_highlight({name: '23432'}).html_safe
-  .card
-    .card-header
-      VERIFY SIGNATURE
-    .card-body
-      %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
-      -# %code= syntax_highlight({name: '23432'}).html_safe
+  .d-flex.flex-column.gap-2.p-4
+    .card
+      .card-header
+        = "HEADER:"
+        %span.text-secondary= "ALGORITHM & TOKEN TYPE"
+      .card-body
+        %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
+        -# %code= syntax_highlight({name: '23432'}).html_safe
+    .card
+      .card-header
+        = "PAYLOAD:"
+        %span.text-secondary= "DATA"
+      .card-body
+        %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
+        -# %code= syntax_highlight({name: '23432'}).html_safe
+    .card
+      .card-header
+        VERIFY SIGNATURE
+      .card-body
+        %div{data: {controller: "codemirror", codemirror_doc_value: {age: 12}.to_json}}
+        -# %code= syntax_highlight({name: '23432'}).html_safe

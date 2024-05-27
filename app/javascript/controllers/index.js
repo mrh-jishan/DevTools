@@ -13,5 +13,8 @@ application.register("clipboard", ClipboardController)
 import CodemirrorController from "./codemirror_controller"
 application.register("codemirror", CodemirrorController)
 
+import JwtEditorController from "./jwt_editor_controller"
+application.register("jwt-editor", JwtEditorController)
+
 import SplitGridController from "./split_grid_controller"
 application.register("split-grid", SplitGridController)

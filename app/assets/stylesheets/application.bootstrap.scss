@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 10px 1fr;
 }
 
-.grid-item {
+.grid-item, .grid-item.form-control {
   overflow: auto;
   box-sizing: border-box;
   min-height: calc(100vh - 65px);
