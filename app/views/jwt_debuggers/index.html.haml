@@ -2,6 +2,7 @@
   = simple_form_for :jwt_debuggers, url: jwt_debuggers_path, data: { controller: "buttonless-form", remote: "true" }, method: "post" do |f|
     .grid{ data: { controller: "split-grid" }}
       .p-4
-        = f.input_field :json_input, :as => :text, value: @token,  class: 'form-control grid-item'
+        -# = f.input_field :json_input, :as => :text, value: @token,  class: 'form-control grid-item', data: { controller: "jwt-editor", "jwt-editor-target" => "editor" }
+        %div{data: { controller: "jwt-editor", "jwt-editor-target" => "editor" }}
       .gutter-col{"data-gutter-col" => ""}
       .grid-item= render "jwt_payload"

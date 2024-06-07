@@ -5,7 +5,7 @@ import {js_beautify} from 'js-beautify';
 // Connects to data-controller="codemirror"
 export default class extends Controller {
 
-    static targets = ["editor", "input"]
+    static targets = ["editor"]
     static values = {
         doc: String
     }
