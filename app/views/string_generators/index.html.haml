@@ -20,19 +20,22 @@
             = f.input :quantity, label: "Quantity:", collection: (1..50), selected: 5
             = f.input :save_my_preference, label: "Save My Preference:", as: :boolean, hint: '( save all the settings above in cookies )'
       .card-footer
-        .d-flex.gap-2
-          = f.submit "Generate (V2)", class: "btn btn-primary btn-sm"
+        .d-flex.gap-2.justify-content-end
+          = f.submit "Generate (V2)", class: "btn btn-secondary btn-sm"
           = f.submit "Generate (V1)", class: "btn btn-primary btn-sm"
-          = f.submit "Copy the 1st Line", class: "btn btn-primary btn-sm"
-          = f.submit "Copy ALL", class: "btn btn-primary btn-sm"
 
-  .card
-    .card-header
-      .card-title
-        = "Your New Passwords"
-    .card-body
-      .d-flex.flex-column.gap-2
-        .px-2{data: { controller: "codemirror" }}
+  =render "password"
+
+
+
+
+  -# .card
+  -#   .card-header
+  -#     .card-title
+  -#       = "Your New Passwords"
+  -#   .card-body
+  -#     .d-flex.flex-column.gap-2
+  -#       .px-2{data: { controller: "codemirror" }}
 
 -# = f.text_area :final_pass, label: false, input_html: { spellcheck: "false", style: "height: 140px;", value: "Your new password will appear here." }
 
