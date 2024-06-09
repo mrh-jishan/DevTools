@@ -18,6 +18,7 @@ export default class extends Controller {
             extensions: [
                 basicSetup,
                 json(),
+                EditorView.lineWrapping,
             ],
         })
 

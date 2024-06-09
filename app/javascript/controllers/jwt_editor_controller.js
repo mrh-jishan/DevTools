@@ -58,6 +58,7 @@ export default class extends Controller {
                 extensions: [
                     basicSetup,
                     highlightPlugin,
+                    EditorView.lineWrapping,
                 ]
             })
         });
