@@ -1,72 +1,64 @@
 import {Controller} from "@hotwired/stimulus";
 import {basicSetup, EditorView} from "codemirror";
-import {HighlightStyle, StreamLanguage, syntaxHighlighting, LanguageSupport, Language} from "@codemirror/language";
-import {Tag} from "@lezer/highlight";
 import {EditorState} from "@codemirror/state";
+import {Decoration, ViewPlugin} from "@codemirror/view";
 
-const jwtTags = {
-    Header: Tag.define(),
-    Payload: Tag.define(),
-    Signature: Tag.define()
-};
+// Connects to data-controller="jwt-editor"
+const jwtHighlighter = (view) => {
+    const widgets = [];
+    const text = view.state.doc.toString();
+    const parts = text.split('.');
 
-// Define custom highlight styles
-const jwtHighlightStyle = HighlightStyle.define([
-    {tag: jwtTags.Header, color: "blue"},
-    {tag: jwtTags.Payload, color: "green"},
-    {tag: jwtTags.Signature, color: "red"}
-]);
+    if (parts.length >= 1) {
+        const headerEnd = parts[0].length;
+        if (headerEnd > 0) {
+            widgets.push(Decoration.mark({class: 'cm-header'}).range(0, headerEnd));
+        }
 
-const jwt = () => {
-    const jwtTokenizer = {
-        token: (stream) => {
-            const jwt = stream.string;
-            const parts = jwt.split('.');
-            if (parts.length !== 3) {
-                stream.skipToEnd();
-                return null;
+        if (parts.length >= 2) {
+            const payloadEnd = headerEnd + 1 + parts[1].length;
+            if (parts[1].length > 0) {
+                widgets.push(Decoration.mark({class: 'cm-payload'}).range(headerEnd + 1, payloadEnd));
             }
-            const [header, payload, signature] = parts;
-            const position = stream.pos;
-            if (position < header.length) {
-                stream.pos = header.length;
-                return "jwt-header";
-            } else if (position < header.length + 1 + payload.length) {
-                stream.pos = header.length + 1 + payload.length;
-                return "jwt-payload";
-            } else if (position < header.length + 1 + payload.length + 1 + signature.length) {
-                stream.pos = header.length + 1 + payload.length + 1 + signature.length;
-                return "jwt-signature";
-            } else {
-                stream.skipToEnd();
-                return null;
+
+            if (parts.length === 3 && parts[2].length > 0) {
+                widgets.push(Decoration.mark({class: 'cm-signature'}).range(payloadEnd + 1, text.length));
             }
         }
-    };
+    }
+    return Decoration.set(widgets, true);
+}
 
-    return StreamLanguage.define({
-        token: (stream) => {
-            return jwtTokenizer.token(stream);
+const highlightPlugin = ViewPlugin.define(view => {
+    return ({
+        decorations: jwtHighlighter(view),
+        update(update) {
+            if (update.docChanged || update.viewportChanged) {
+                this.decorations = jwtHighlighter(update.view);
+            }
         }
     });
-};
+}, {
+    decorations: v => v.decorations
+});
 
 export default class extends Controller {
+
     static targets = ["editor"];
     static values = {
         doc: String
     };
 
     connect() {
+
         new EditorView({
             parent: this.editorTarget || this.element,
             state: EditorState.create({
-                doc: this.docValue || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+                doc: this.docValue || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
                 extensions: [
-                    // basicSetup,
-                    syntaxHighlighting(jwtHighlightStyle),
-                    jwt()
-                ],
+                    basicSetup,
+                    highlightPlugin,
+                ]
             })
         });
     }
