@@ -1,4 +1,4 @@
-.d-flex.flex-column.p-3.min-vh-100
+.d-flex.flex-column.p-3.min-vh-100.overflow-hidden
   = link_to root_path, class: "d-flex align-items-center px-4link-body-emphasis text-decoration-none" do
     %i.bi.bi-code.pe-none.me-2{style: "font-size: 2rem"}
     %span.fs-4 DevTools
@@ -23,7 +23,7 @@
   %hr/
   .dropdown
     %a.d-flex.align-items-center.link-body-emphasis.text-decoration-none.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#"}
-      %img.rounded-circle.me-2{alt: "", height: "32", src: "https://github.com/mdo.png", width: "32"}/
+      %i.bi.bi-person-circle.pe-none.me-2{style: "font-size: 1.8rem"}
       %strong mdo
     %ul.dropdown-menu.text-small.shadow
       %li

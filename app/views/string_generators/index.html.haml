@@ -1,31 +1,40 @@
-.p-4
+.p-4.d-flex.flex-column.gap-2
+  = simple_form_for :string_generators, url: string_generators_path, data: { controller: "buttonless-form", remote: "true" }, method: "post" do |f|
+    .card
+      .card-header
+        .card-title= "Password Generator Plus"
+      .card-body
+        .d-flex.gap-4
+          .d-flex.flex-column
+            = f.input :category, label: "Password Length:", :as => :grouped_select, collection: [["Weak", (6..15)], ["String", (16..50)]], :group_method => :last, selected: 22
+            = f.input :include_numbers, label: "Include Numbers:", as: :boolean, hint: '( e.g. 123456 )', input_html: { checked: true }
+            = f.input :include_lowercase, label: "Include Lowercase Characters:", as: :boolean, hint: '( e.g. abcdefgh )', input_html: { checked: true }
+            = f.input :include_uppercase, label: "Include Uppercase Characters:", as: :boolean, hint: '( e.g. ABCDEFGH )', input_html: { checked: true }
+            = f.input :begin_with_letter, label: "Begin With A Letter:", as: :boolean, hint: '( don\'t begin with a number or symbol )', input_html: { checked: true }
+            = f.input :include_symbols, label: "Include Symbols:", input_html: {  size: "75", value: "!&quot;#$%&'()*+,-./:;<=>?@[\]^_`{|}~" }
+          .d-flex.flex-column
+            = f.input :no_similar_characters, label: "No Similar Characters:", as: :boolean, hint: '( don\'t use characters like i, l, 1, L, o, 0, O, etc. )', input_html: { checked: true }
+            = f.input :no_duplicate_characters, label: "No Duplicate Characters:", as: :boolean, hint: '( don\'t use the same character more than once )', input_html: { checked: true }
+            = f.input :no_seq_characters, label: "No Sequential Characters:", as: :boolean, hint: '( don\'t use sequential characters, e.g. abc, 789 )', input_html: { checked: true }
+            = f.input :auto_generate_first_call, label: "Auto Generate On The First Call:", as: :boolean, hint: '( generate passwords automatically when you open this page )', input_html: { checked: true }
+            = f.input :quantity, label: "Quantity:", collection: (1..50), selected: 5
+            = f.input :save_my_preference, label: "Save My Preference:", as: :boolean, hint: '( save all the settings above in cookies )'
+      .card-footer
+        .d-flex.gap-2
+          = f.submit "Generate (V2)", class: "btn btn-primary btn-sm"
+          = f.submit "Generate (V1)", class: "btn btn-primary btn-sm"
+          = f.submit "Copy the 1st Line", class: "btn btn-primary btn-sm"
+          = f.submit "Copy ALL", class: "btn btn-primary btn-sm"
+
   .card
     .card-header
-      .card-title= "Password Generator Plus"
+      .card-title
+        = "Your New Passwords"
     .card-body
-      = simple_form_for :string_generators, url: string_generators_path, data: { controller: "buttonless-form", remote: "true" }, method: "post" do |f|
-        .d-flex.gap-2.flex-column
-          = f.input :category, label: "Password Length:", :as => :grouped_select, collection: [["Weak", (6..15)], ["String", (16..50)]], :group_method => :last, selected: 22
-          = f.input :include_numbers, label: "Include Numbers:", as: :boolean, hint: '( e.g. 123456 )', input_html: { checked: true }
-          = f.input :include_lowercase, label: "Include Lowercase Characters:", as: :boolean, hint: '( e.g. abcdefgh )', input_html: { checked: true }
-          = f.input :include_uppercase, label: "Include Uppercase Characters:", as: :boolean, hint: '( e.g. ABCDEFGH )', input_html: { checked: true }
-          = f.input :begin_with_letter, label: "Begin With A Letter:", as: :boolean, hint: '( don\'t begin with a number or symbol )', input_html: { checked: true }
-          = f.input :include_symbols, label: "Include Symbols:", input_html: {  size: "75", value: "!&quot;#$%&'()*+,-./:;<=>?@[\]^_`{|}~" }
-          = f.input :no_similar_characters, label: "No Similar Characters:", as: :boolean, hint: '( don\'t use characters like i, l, 1, L, o, 0, O, etc. )', input_html: { checked: true }
-          = f.input :no_duplicate_characters, label: "No Duplicate Characters:", as: :boolean, hint: '( don\'t use the same character more than once )', input_html: { checked: true }
-          = f.input :no_seq_characters, label: "No Sequential Characters:", as: :boolean, hint: '( don\'t use sequential characters, e.g. abc, 789 )', input_html: { checked: true }
-          = f.input :auto_generate_first_call, label: "Auto Generate On The First Call:", as: :boolean, hint: '( generate passwords automatically when you open this page )', input_html: { checked: true }
-          = f.input :quantity, label: "Quantity:", collection: (1..50), selected: 5
-          = f.input :save_my_preference, label: "Save My Preference:", as: :boolean, hint: '( save all the settings above in cookies )'
-          .d-flex.gap-2
-            = f.submit "Generate (V2)", class: "btn btn-primary btn-sm"
-            = f.submit "Generate (V1)", class: "btn btn-primary btn-sm"
-            = f.submit "Copy the 1st Line", class: "btn btn-primary btn-sm"
-            = f.submit "Copy ALL", class: "btn btn-primary btn-sm"
-          .d-flex.flex-column.gap-2
-            = "Your New Passwords:"
-            .px-2{data: { controller: "codemirror" }}
-              -# = f.text_area :final_pass, label: false, input_html: { spellcheck: "false", style: "height: 140px;", value: "Your new password will appear here." }
+      .d-flex.flex-column.gap-2
+        .px-2{data: { controller: "codemirror" }}
+
+-# = f.text_area :final_pass, label: false, input_html: { spellcheck: "false", style: "height: 140px;", value: "Your new password will appear here." }
 
 -# %h4.text-center= "Password Generator Plus"
 -# .d-flex.flex-column.gap-2
