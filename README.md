@@ -1,24 +1,12 @@
-# README
+## DevTools
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Basic dev tools to help developers to write code faster than before. 
 
-Things you may want to cover:
 
-* Ruby version
+### Example 
 
-* System dependencies
+![jwt_validator.png](docs%2Fjwt_validator.png)
 
-* Configuration
+![string-generator.png](docs%2Fstring-generator.png)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![json_validator.png](docs%2Fjson_validator.png)
