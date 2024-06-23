@@ -6,12 +6,18 @@
       .card-body
         .d-flex.gap-4
           .d-flex.flex-column
-            = f.input :category, label: "Password Length:", :as => :grouped_select, collection: [["Weak", (6..15)], ["String", (16..50)]], :group_method => :last, selected: 22
+            = f.input :password_length, label: "Password Length:", :as => :grouped_select, collection: [["Weak", (6..15)], ["String", (16..50)]], :group_method => :last, selected: 22
             = f.input :include_numbers, label: "Include Numbers:", as: :boolean, hint: '( e.g. 123456 )', input_html: { checked: true }
             = f.input :include_lowercase, label: "Include Lowercase Characters:", as: :boolean, hint: '( e.g. abcdefgh )', input_html: { checked: true }
             = f.input :include_uppercase, label: "Include Uppercase Characters:", as: :boolean, hint: '( e.g. ABCDEFGH )', input_html: { checked: true }
             = f.input :begin_with_letter, label: "Begin With A Letter:", as: :boolean, hint: '( don\'t begin with a number or symbol )', input_html: { checked: true }
-            = f.input :include_symbols, label: "Include Symbols:", input_html: {  size: "75", value: "!&quot;#$%&'()*+,-./:;<=>?@[\]^_`{|}~" }
+            = label_tag :include_symbols, class: 'form-label select required' do
+              Include Symbols:
+              %abbr{title: "required"} *
+            .input-group.mb-3
+              .input-group-text
+                = f.input :include_symbols, label: false, as: :boolean, input_html: { checked: true }, wrapper: false
+              = f.input :symbols, label: false, input_html: {  size: "75", value: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" }, wrapper: false
           .d-flex.flex-column
             = f.input :no_similar_characters, label: "No Similar Characters:", as: :boolean, hint: '( don\'t use characters like i, l, 1, L, o, 0, O, etc. )', input_html: { checked: true }
             = f.input :no_duplicate_characters, label: "No Duplicate Characters:", as: :boolean, hint: '( don\'t use the same character more than once )', input_html: { checked: true }
@@ -27,41 +33,3 @@
   =render "password"
 
 
-
-
-  -# .card
-  -#   .card-header
-  -#     .card-title
-  -#       = "Your New Passwords"
-  -#   .card-body
-  -#     .d-flex.flex-column.gap-2
-  -#       .px-2{data: { controller: "codemirror" }}
-
--# = f.text_area :final_pass, label: false, input_html: { spellcheck: "false", style: "height: 140px;", value: "Your new password will appear here." }
-
--# %h4.text-center= "Password Generator Plus"
--# .d-flex.flex-column.gap-2
--#   .card
--#     .card-header
--#       Instantly generate a secure, random password
--#     .card-body
--#       =render "password"
--#
--#   = simple_form_for :string_generators, url: string_generators_path, data: { remote: "true" }, method: "post" do |f|
--#     .card
--#       .card-header
--#         Customize your password
--#       .card-body
--#         .row
--#           .col-6
--#             = f.input :password_length, as: :range, input_html:{ min:"0", max:"45", step: "1"}
--#           .col-3
--#             =f.input :password_strength, as: :radio_buttons, collection: %w[easy_to_say easy_to_read all_characters]
--#           .col-3
--#             =f.input :uppercase, as: :boolean
--#             =f.input :Lowercase, as: :boolean
--#             =f.input :Numbers, as: :boolean
--#             =f.input :Symbols, as: :boolean
--#
--#     =f.submit t('.generate'), class: "btn btn-primary"
--#

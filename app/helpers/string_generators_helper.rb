@@ -1,27 +1,29 @@
 module StringGeneratorsHelper
 
-  def generate_password(length, use_letters, use_numbers, use_symbols, use_uppercase, use_lowercase, easy_to_say, easy_to_write)
-    letters = 'abcdefghijklmnopqrstuvwxyz'
-    numbers = '0123456789'
-    symbols = '!@#$%^&*()_+~`|}{[]:;?><,./-=\\'
+  def generate_password(password_version: nil,
+                        password_length: nil,
+                        include_numbers: nil,
+                        include_lowercase: nil,
+                        include_uppercase: nil,
+                        begin_with_letter: nil,
+                        include_symbols: nil,
+                        symbols: nil,
+                        no_similar_characters: nil,
+                        no_duplicate_characters: nil,
+                        no_seq_characters: nil,
+                        auto_generate_first_call: nil,
+                        quantity: nil,
+                        save_my_preference: nil)
 
-    characters = ''
-    characters += letters if use_letters && use_lowercase
-    characters += letters.upcase if use_uppercase && use_letters
-    characters += numbers if use_numbers
-    characters += symbols if use_symbols
 
-    if easy_to_say
-      characters = 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'
-    end
 
-    if easy_to_write
-      characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-    end
+     szLower = "abcdefghjkmnpqrstuvwxyz"
+     szUpper = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+     szNumber = "23456789"
+     szSymbols = ""
 
-    password = ''
-    length.times { password += characters.chars.sample }
-    password
+
+    password_version
   end
 
 end
